@@ -1,0 +1,26 @@
+token 258: public
+token 269: class
+token 267: hello
+token 123: {
+token 258: public
+token 270: static
+token 265: void
+token 267: main
+token 40: (
+token 267: String
+token 267: argv
+token 91: [
+token 93: ]
+token 41: )
+token 123: {
+token 267: System
+token 46: .
+token 267: out
+token 46: .
+token 267: println
+token 40: (
+token 277: "hello, jzero!"
+token 41: )
+token 59: ;
+token 125: }
+token 125: }

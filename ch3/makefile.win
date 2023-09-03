@@ -1,0 +1,53 @@
+#
+# Build Your Own Programming Language, 2nd edition, Chapter 3 Windows makefile
+#
+# For testing purposes!
+# You do not need "make" to run the examples from Chapter 3.
+# I use "make" in order to regression-test and ensure that the
+# code runs.
+#
+
+all: u j
+
+u: simple-u simple2-u j0-u
+
+simple-u:
+	uflex nnws.l
+	unicon simple nnws
+	simple dorrie.in >dorrie.out
+	diff dorrie.out dorrie.std
+
+simple2-u:
+	uflex nnws-tok.l
+	unicon simple2 nnws-tok
+	-simple2 dorrie2.in >dorrie2.out
+	diff dorrie2.out dorrie2.std
+
+j0-u:
+	uflex javalex.l
+	unicon j0 javalex
+	j0 hello.java >hello.out
+	diff hello.out hello.std
+
+j: simple-j simple2-j j0-j
+
+simple-j:
+	jflex nnws.l
+	javac simple.java
+	java simple dorrie.in >dorrie.out
+	diff dorrie.out dorrie.std
+
+
+simple2-j:
+	jflex nnws-tok.l
+	javac token.java
+	javac simple2.java Yylex.java
+	-java simple2 dorrie2.in >dorrie2.out
+	diff dorrie2.out dorrie2.std
+
+j0-j:
+	jflex javalex.l
+	javac j0.java Yylex.java
+	javac token.java parser.java
+	java j0 hello.java > hello.out
+	diff hello.out hello.std
