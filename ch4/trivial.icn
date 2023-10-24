@@ -2,7 +2,7 @@ procedure main(argv)
    yyin := open(argv[1])
    lexer := lexer()
    Parser := Parser()
-   if yyparse() = 0 then write("No errors")
+   if yyparse() = 0 then write("no errors")
 end
 procedure yyerror(s)
     stop(s)

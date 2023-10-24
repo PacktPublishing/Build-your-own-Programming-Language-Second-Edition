@@ -7,7 +7,11 @@
 #
 # On Windows one may need to set the CLASSPATH by whatever syntax one now
 # uses for that. It varies by shell. It used to be
+#
 # set CLASSPATH=".;c:\users\Alfrede Newmann"
+#
+# where you would change Afrede Newmann to say whatever path
+# leads to the directory above your ch4/ directory.
 #
 
 all: u j
@@ -31,7 +35,6 @@ j0-u:
 j: trivial-j j0-j
 
 trivial-j:
-	set CLASSPATH
 	jflex nnws.l
 	yacc -Jpackage=ch4 -Jyylex=ch4.lexer.yylex \
 		-Jyyerror=ch4.yyerror.yyerror ns.y

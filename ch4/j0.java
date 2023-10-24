@@ -13,7 +13,7 @@ public class j0 {
       int i = par.yyparse();
       if (i == 0)
          System.out.println("no errors, " + j0.count +
-			    "tokens parsed");
+			    " tokens parsed");
    }
     //   public static parserVal yylval;
    public static void init(String s) throws Exception {
@@ -39,6 +39,7 @@ public class j0 {
    public static int scan(int cat) {
       ch4.j0.par.yylval = new parserVal(
 				new token(cat, yytext(), yylineno, yycolno));
+      count++;
       return cat;
    }
    public static void newline() {

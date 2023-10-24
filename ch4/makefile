@@ -6,8 +6,14 @@
 # I use "make" in order to regression-test and ensure that the code runs.
 #
 # On Linux one may need to set the CLASSPATH by whatever syntax one now
-# uses for that. It varies by shell.
-# export CLASSPATH=.:..
+# uses for that. It varies by shell:L
+#
+#   export CLASSPATH=.:..
+# or just
+#   export CLASSPATH=..
+# or maybe
+#   export CLASSPATH=/c/users/username/example
+# where that path is the directory above the ch4/ directory.
 #
 
 all: u j
