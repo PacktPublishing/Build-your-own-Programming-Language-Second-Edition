@@ -10,7 +10,7 @@ procedure main(argv)
    yyin := open(argv[1]) | stop("usage: simple2 filename")
    yylineno := 1
    while i := yylex() do
-      write("token ", i, ": ", yytext)
+      write("token ", i, ":", yylval.lineno, " ", yytext)
 end
 class j0()
    method lexErr(s)
