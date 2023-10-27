@@ -1,0 +1,21 @@
+63  ClassDecl (1000): 2
+ 6  hello (266): 1
+ 62  ClassBody (1010): 1
+  59  MethodDecl (1380): 2
+   32  MethodHeader (1070): 2
+    14  void (264): 2
+    31  MethodDeclarator (1080): 2
+     16  main (266): 2
+     30  FormalParm (1100): 2
+      20  String (266): 2
+      27  VarDeclarator (1060): 1
+       22  argv (266): 2
+   58  Block (1200): 1
+    53  MethodCall (1290): 2
+     46  QualifiedName (1040): 2
+      41  QualifiedName (1040): 2
+       36  System (266): 3
+       40  out (266): 3
+      45  println (266): 3
+     50  "hello, jzero!" (273): 3
+no errors
