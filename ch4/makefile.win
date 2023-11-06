@@ -13,6 +13,10 @@
 # where you would change Afrede Newmann to say whatever path
 # leads to the directory above your ch4/ directory.
 #
+# On 10/31/23 with Java 21 I was able to just use
+#
+# set CLASSPATH=..
+#
 
 all: u j
 

@@ -1,3 +1,4 @@
 procedure yyerror(s)
-    stop(s)
+    write(&errout, "line ", yylineno, " column ", yycolno,
+	  ", lexeme \"", yytext, "\": ", s)
 end

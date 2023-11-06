@@ -28,7 +28,6 @@ FormalParm: Type VarDeclarator ;
 
 ConstructorDecl: ConstructorDeclarator Block ;
 ConstructorDeclarator: IDENTIFIER '(' FormalParmListOpt ')' ;
-ArgListOpt:  ArgList | ;
 
 Block: '{' BlockStmtsOpt '}' ;
 BlockStmtsOpt: BlockStmts | ;
@@ -41,8 +40,6 @@ LocalVarDecl: Type VarDecls ;
 Stmt: Block | ';' | ExprStmt | BreakStmt | ReturnStmt |
       | IfThenStmt | IfThenElseStmt | IfThenElseIfStmt
       | WhileStmt | ForStmt ;
-
-StmtWithoutTrailingSubstatement: 
 
 ExprStmt: StmtExpr ';' ;
 
@@ -71,6 +68,7 @@ Primary:  Literal | '(' Expr ')' | FieldAccess | MethodCall ;
 Literal: INTLIT	| DOUBLELIT | BOOLLIT | STRINGLIT | NULLVAL ;
 
 InstantiationExpr: Name '(' ArgListOpt ')' ;
+ArgListOpt:  ArgList | ;
 ArgList: Expr | ArgList ',' Expr ;
 FieldAccess: Primary '.' IDENTIFIER ;
 

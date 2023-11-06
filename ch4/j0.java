@@ -2,11 +2,11 @@ package ch4;
 import java.io.FileReader;
 public class j0 {
    public static Yylex yylexer;
-   public static ch4.parser par;
+   public static parser par;
     public static int yylineno, yycolno, count;
    public static void main(String argv[]) throws Exception {
       init(argv[0]);
-      par = new ch4.parser();
+      par = new parser();
       //      par.yydebug=true;
       yylineno = yycolno = 1;
       count = 0;
@@ -37,7 +37,7 @@ public class j0 {
       System.exit(1);
    }
    public static int scan(int cat) {
-      ch4.j0.par.yylval = new parserVal(
+      j0.par.yylval = new parserVal(
 				new token(cat, yytext(), yylineno, yycolno));
       count++;
       return cat;
