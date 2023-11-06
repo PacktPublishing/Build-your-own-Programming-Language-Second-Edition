@@ -95,7 +95,8 @@ class tree {
     }
     public tree(String s, int r, token t) {
 	id = serial.getid();
-        sym = s; rule = r; tok = t; }
+        sym = s; rule = r; tok = t;
+    }
 
     public tree(String s, int r, tree[] t) {
 	id = serial.getid();

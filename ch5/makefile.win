@@ -24,7 +24,7 @@ unicon: j0
 u: unicon
 	j0 hello.java >hello.out
 	diff hello.out hello.std
-	dot -Tpng hello.java.dot >hello.png
+	dot -Tpng -Gdpi=300 hello.java.dot >hello.png
 	-diff hellostd.png hello.png
 	rem you will have to eyeball hello.png to see if it looks correct
 j0: $(U)
@@ -52,7 +52,7 @@ java: j0.class
 j: java
 	java ch5.j0 hello.java >hello.out
 	diff hello.out hello.std
-	dot -Tpng hello.java.dot >hello.png
+	dot -Tpng -Gdpi=300 hello.java.dot >hello.png
 	-diff hellostd.png hello.png
 	rem you will have to eyeball hello.png to see if it looks correct
 

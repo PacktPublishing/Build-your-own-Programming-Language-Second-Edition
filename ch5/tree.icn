@@ -62,7 +62,7 @@ initially (s,r,x[])
    if type(x[1]) == "token__state" then {
       nkids := 0; tok := x[1]
    } else {
-      nkids := *x;
+      nkids := *x
       kids := x
    }
 end

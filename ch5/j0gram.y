@@ -101,10 +101,11 @@ Literal: INTLIT	| DOUBLELIT | BOOLLIT | STRINGLIT | NULLVAL ;
 
 ArgList: Expr | ArgList ',' Expr {
   $$=j0.node("ArgList",1270,$1,$3); };
+ArgListOpt:  ArgList | ;
+
 FieldAccess: Primary '.' IDENTIFIER {
   $$=j0.node("FieldAccess",1280,$1,$3); };
 
-ArgListOpt:  ArgList | ;
 MethodCall: Name '(' ArgListOpt ')' {
   $$=j0.node("MethodCall",1290,$1,$3); }
   | Primary '.' IDENTIFIER '(' ArgListOpt ')' {
