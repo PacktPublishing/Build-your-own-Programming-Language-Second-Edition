@@ -2,11 +2,11 @@ package ch6;
 import java.io.FileReader;
 public class j0 {
    public static Yylex yylexer;
-   public static ch6.parser par;
-   public static ch6.symtab global_st;
+   public static parser par;
+   public static symtab global_st;
    public static void main(String argv[]) throws Exception {
       init(argv[0]);
-      par = new ch6.parser();
+      par = new parser();
       //                  par.yydebug=true;
       yylineno = 1;
       int i = par.yyparse();
@@ -39,7 +39,7 @@ public class j0 {
       System.exit(1);
    }
    public static int scan(int cat) {
-       ch6.j0.par.yylval =
+       j0.par.yylval =
 	   new parserVal(new tree("token",0,
 		new token(cat, yytext(), yylineno)));
       return cat;
@@ -68,10 +68,10 @@ public class j0 {
   }
   public static void semantic(parserVal r) {
     tree root = (tree)(r.obj);
-    ch6.symtab out_st, System_st;
-    global_st = new ch6.symtab("global");
-    System_st = new ch6.symtab("class");
-    out_st = new ch6.symtab("class");
+    symtab out_st, System_st;
+    global_st = new symtab("global");
+    System_st = new symtab("class");
+    out_st = new symtab("class");
     out_st.insert("println", false);
     System_st.insert("out", false, out_st);
     global_st.insert("System", false, System_st);

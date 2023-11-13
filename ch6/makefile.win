@@ -23,7 +23,9 @@ unicon: j0
 	unicon -c $<
 u: unicon
 	j0 hello.java >hello.out
-	dot -Tpng hello.java.dot >hello.png
+
+#	dot -Tpng hello.java.dot >hello.png
+
 j0: $(U)
 	unicon $(U)
 javalex.icn: javalex.l
@@ -43,7 +45,8 @@ java: j0.class
 
 j: java
 	java ch6.j0 hello.java
-	dot -Tpng hello.java.dot >hello.png
+
+#	dot -Tpng hello.java.dot >hello.png
 
 j0.class: $(JSRC)
 	javac $(JSRC)
