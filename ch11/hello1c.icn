@@ -1,0 +1,9 @@
+package hello1c
+procedure main(argv [ ])
+local 
+x
+x:=1
+x:=( x +1)
+end
+class hello1c()
+end

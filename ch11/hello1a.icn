@@ -1,0 +1,8 @@
+package hello1a
+procedure main(argv [ ])
+if 1===2 then {
+write("hello, jzero!")
+}
+end
+class hello1a()
+end

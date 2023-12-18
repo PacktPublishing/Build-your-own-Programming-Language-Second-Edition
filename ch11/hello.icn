@@ -1,0 +1,8 @@
+package hello
+procedure main(argv)
+write(
+"hello, jzero!"
+)
+end
+class hello()
+end

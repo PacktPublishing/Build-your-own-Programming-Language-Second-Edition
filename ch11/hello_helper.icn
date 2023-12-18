@@ -1,0 +1,3 @@
+procedure main(argv)
+   hello__main ! argv
+end

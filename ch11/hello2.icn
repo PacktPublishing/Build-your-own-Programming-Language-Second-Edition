@@ -1,0 +1,13 @@
+package hello2
+procedure main(a)
+local 
+x
+x:=*argv
+x:=( x +2)
+while x > 3 do {
+write("hello, jzero!")
+x:=( x -1)
+}
+end
+class hello2()
+end
