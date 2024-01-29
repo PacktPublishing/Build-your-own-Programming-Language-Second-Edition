@@ -3,7 +3,7 @@ This is the code repository for [Build your own Programming Language, Second Edi
 
 **A developer's comprehensive guide to crafting, compiling, and implementing programming languages**
 
-The author of this book is -[Clinton Jeffery](https://www.linkedin.com/in/clinton-jeffery-b109464/)
+The author of this book is - [Clinton Jeffery](https://www.linkedin.com/in/clinton-jeffery-b109464/)
 
 ## About the book
 There are many reasons to build a programming language: out of necessity, as a learning exercise, or just for fun. Whatever your reasons, this book gives you the tools to succeed.
