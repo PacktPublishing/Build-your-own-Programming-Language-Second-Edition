@@ -200,7 +200,41 @@ The chapter aims to elucidate the significance of garbage collection and provide
 3.	While some time might be saved by not moving data during garbage collection, over time, a substantial amount of memory might be lost to fragmentation. Small chunks of free memory might go unused because later memory allocation requests were for larger amounts. The task of finding a free chunk of sufficient size might become more complex, and that cost might exceed the time saved by not moving data.
 
 
+
 > If you feel this book is for you, get your [copy](https://www.amazon.com/Build-Your-Own-Programming-Language/dp/1804618020) today! <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+
+With the following software and hardware list you can run all code files present in the book.
+
+## Software and hardware list
+
+| Software required    | Link to the software    | Hardware specifications    | OS required    |
+|:---:  |:---:  |:---:  |:---:  |
+| Java 21 | [http://openjdk.org](http://openjdk.org) | Should work on any recent computer | Windows, MacOS, Linux  |
+| Unicon version 13.3 | [http://unicon.org](http://unicon.org) | Should work on any recent computer | Windows, MacOS, Linux  |
+|JFlex | [http://jflex.de/download.html](http://jflex.de/download.html) | Should work on any recent computer | Windows, MacOS, Linux  |
+
+
+
+
+
+## Know more on the Discord server <img alt="Coding" height="25" width="32"  src="https://cliply.co/wp-content/uploads/2021/08/372108630_DISCORD_LOGO_400.gif">
+
+You can get more engaged on the discord server for more latest updates and discussions in the community at [Discord](https://discord.com/invite/zGVbWaxqbw)
+
+## Download a free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif">
+
+_If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost. Simply click on the link to claim your free PDF._
+[Free-Ebook](https://packt.link/free-ebook/9781804618028) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book at [GraphicBundle](https://packt.link/gbp/9781804618028) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+
+
+## Get to know the Author
+Clinton L. Jeffery is Professor and Chair of the Department of Computer Science and Engineering at the New Mexico Institute of Mining and Technology. He received his B.S. from the University of Washington, and M.S. and Ph.D. degrees from the University of Arizona, all in computer science. He has conducted research and written many books and papers on programming languages, program monitoring, debugging, graphics, virtual environments, and visualization. With colleagues, he invented the Unicon programming language, hosted at unicon.org.
+
+## Other Related Books
+- [50 Algorithms Every Programmer Should Know – Second Edition](https://www.packtpub.com/product/50-algorithms-every-programmer-should-know-second-edition/9781803247762)
+- [Learn LLVM 17 – Second Edition](https://www.packtpub.com/product/learn-llvm-17-second-edition/9781837631346)
 
 
 
