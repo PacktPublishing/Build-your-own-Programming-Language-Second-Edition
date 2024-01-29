@@ -31,6 +31,7 @@ This book is about building new programming languages. The topic of programming 
 One thing I didn't really understand after my college compiler class is that the compiler is only one part of a programming language implementation. Higher-level languages, including most newer languages, may have a runtime system that dwarfs their compiler. For this reason, the second half of this book spends quality time on a variety of aspects of language runtime systems, ranging from bytecode interpreters to garbage collection.
 
 ### Chapter 1, Why Build Another Programming Language?
+This chapter points out a few good reasons to build your own programming language, as well as some circumstances in which you don’t need to build your contemplated language. After all, designing a class library for your application domain is often simpler and just as effective. However, libraries have their limitations, and sometimes, only a new language will do.
 
 **Key Insights**:
 
@@ -40,6 +41,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	This depends on your application domain of interest, but here is one. The language will input programs written in a Java-like syntax stored in files with a .j0 extension, generating target code in the form of HTML5 + JavaScript that runs on websites. The language will support JDBC and socket communications via websockets, and 2D and 3D graphics by means of OpenGL. The language will support an intuitive square-bracket syntax for accessing string elements and HashMap keys. The language will support JSON syntax natively within the source code as a HashMap literal.
 
 ### Chapter 2, Programming Language Design 
+This chapter points out the crucial steps in designing a programming language, emphasizing the importance of thorough definition before implementation. It discusses the necessity of outlining both surface-level features, such as word formation and punctuation, and higher-level syntax governing program structure. The process involves writing example code to illustrate language constructs and variations, followed by the formulation of lexical and syntax rules. Once examples are comprehensive and rules are defined, a language design document is created as a reference for implementation. Key topics covered include word and punctuation selection, control flow specification, data types, program structure, and the completion of language definition through a case study.
 
 **Key Insights**:
 1.	Reserved words contribute both to human readability and ease of parsing for the language implementation, but they also sometimes preclude the most natural names for the variables in a program, and too many reserved words can make it more difficult to learn a programming language.
@@ -49,6 +51,7 @@ One thing I didn't really understand after my college compiler class is that the
 5.	While it is feasible to provide pre-opened input/output facilities, these can involve substantial resources and initialization costs that programs should not have to pay for unless a given input/output facility will be used in them. If you design a language that specifically targets a domain where one of these forms of input/output is guaranteed, it makes good sense to consider how to make access as simple as possible.
 
 ### Chapter 3, Scanning Source Code
+This chapter delves into the fundamental process of parsing source code by identifying characters and grouping them into meaningful units. It draws parallels between natural language comprehension and programming language understanding, highlighting the importance of recognizing words and punctuation through pattern matching. Key topics covered include lexemes, lexical categories, and tokens, along with techniques such as regular expressions. The discussion extends to practical tools like UFlex and JFlex for scanning source code and constructing parsers. Additionally, it addresses the limitations of regular expressions in certain contexts. The chapter emphasizes the necessity of categorizing entities in program source code to facilitate interpretation, akin to distinguishing parts of speech in natural language.
 
 **Key Insights**:
 1.	A first approximation of the regular expression is [0-3][0-9]”/”[01][0-9]”/”[0-9]{4}. While it is possible to write a regular expression that matches only legal dates, such an expression is impractically long, especially when you consider leap years. In such cases, it makes sense to use the regular expression that provides the simplest close approximation of correctness, and then check the correctness in the semantic action or a subsequent semantic analysis phase.
@@ -57,6 +60,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	Flex matches the longest string that it can; it breaks ties among multiple regular expressions by selecting whichever one matches the longest string. When two regular expressions match the same length in a given point, Flex selects whichever regular expression occurs first in the lex specification file.
 
 ### Chapter 4, Parsing
+This chapter explores the process of parsing, where individual lexemes are organized into larger programming constructs like expressions, statements, functions, classes, and packages. Parsing involves defining syntax rules using grammars and constructing a parser using parser generator tools. Additionally, the chapter addresses the importance of generating clear and helpful syntax error messages to aid developers in debugging. Key topics include syntax analysis, context-free grammars, and the utilization of tools like iyacc and BYACC/J to automate parser generation. Practical application is demonstrated through the creation of a parser for Jzero and strategies for enhancing syntax error reporting are discussed.
 
 **Key Insights**:
 1.	A terminal symbol is not defined by a production rule in terms of other symbols. This is the opposite of a non-terminal symbol, which can be replaced by or constructed from the sequence of symbols on the right-hand side of a production rule that defines that non-terminal symbol.
@@ -65,6 +69,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	The integer categories returned from yylex() in the previous chapter are exactly the sequence of terminal symbols that the parser sees and shifts during parsing. A successful parse shifts all the available input symbols and gradually reduces them back to the starting non-terminal of the grammar.
 
 ### Chapter 5, Syntax Trees
+This chapter focuses on the subsequent phases of compiler construction: semantic analysis and code generation, following lexical and syntax analysis. While the parser developed in the previous chapter handles syntax errors, it also constructs a data structure known as a syntax tree when no errors are present. Syntax trees represent the logical organization of a program based on how tokens and program components are grouped together according to grammar rules. These trees serve as the foundation for language implementation, guiding semantic analysis and code generation phases. The chapter introduces the concept of syntax trees, detailing their construction and role in language implementation. Key topics include understanding tree data structures, creating leaves from terminal symbols, building internal nodes from production rules, forming syntax trees for the Jzero language, and techniques for debugging and testing syntax trees. Additionally, the chapter previews new tools aimed at facilitating language development throughout the book.
 
 **Key Insights**:
 1.	The yylex() lexical analyzer allocates a leaf and stores it in yylval for each terminal symbol that it returns to yyparse().
@@ -73,6 +78,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	A value stack is fully generic and can contain whatever type(s) of values the compiler may require. In C, this is done using a union type, which is type-unsafe. In Java, it is done using a parserVal class that contains the tree nodes generically. In Unicon and other dynamic languages, no wrapping or unwrapping is needed.
 
 ### Chapter 6, Symbol Tables
+This chapter delves into the critical task of semantic analysis in compiler construction, focusing on understanding and managing symbols in program source code. Symbol tables, auxiliary data structures to syntax trees, play a pivotal role in this process, enabling the compiler to resolve references to names like variables, functions, classes, or packages. Semantic analysis involves studying the meaning of the input source code, identifying semantic errors, and preparing for subsequent phases like type checking and code generation. Key concepts include distinguishing terminal symbols and non-terminal symbols in context-free grammars from symbols representing names in source code. The chapter introduces the construction, population, and utilization of symbol tables, highlighting their importance in error detection, type checking, and code generation. Practical examples focus on building symbol tables for a subset of Java, emphasizing recursive tree traversal techniques. Topics covered include establishing groundwork for symbol tables, managing scopes, handling undeclared and redeclared variables, and addressing package and class scopes. This chapter lays the foundation for advanced compiler concepts and techniques.
 
 **Key Insights**:
 1.	Symbol tables allow your semantic analysis and code generation phases to quickly look up symbols declared far away in the syntax tree, following the scoping rules of the language.
@@ -81,6 +87,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	If Jzero allowed multiple classes in separate files, the symbol tables would need a mechanism to be aware of the classes. In Java, this may entail reading other source files at compile time while compiling a given file. This implies that classes must be easily found without reference to their filename, hence Java’s requirement that classes be placed in files whose base name is the same as the class name.
 
 ### Chapter 7, Checking Base Types
+This chapter focuses on implementing simple type checks for the base types found in the Jzero subset of Java, enhancing the compiler's ability to generate correct instructions based on operand types. By associating type information with syntax tree nodes, the compiler gains insight into the types of operands, allowing for more accurate code generation. Key topics include representing types within the compiler, assigning type information to declared variables, determining types at each syntax tree node, and exploring runtime type checks and type inference through a Unicon example. The chapter addresses the significance of type checking in ensuring both efficiency and safety in program execution. While languages like Python, Lisp, BASIC, and Unicon may forgo explicit type checking for user-friendliness, opting for runtime checks, compile-time type checking offers performance benefits and helps prevent fatal errors. Thus, the chapter delves into type checking methodologies, starting with base types, and emphasizes the importance of representing type information extracted from source code.
 
 **Key Insights**:
 1.	Type checking finds many errors that would prevent the program from running correctly, but it also helps determine how much memory will be needed to hold variables, and exactly what instructions will be needed to perform the various operations in the program.
@@ -89,6 +96,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	Picky type checkers may be a pain for programmers, but they help avoid unintended type conversions that hide logic errors, and they also reduce the tendency of a language to run slow due to silently and automatically converting types repeatedly at runtime.
 
 ### Chapter 8, Checking Types on Arrays, Method Calls, and Structure Accesses
+This chapter expands on the type checking principles introduced earlier, focusing on more intricate operations. It covers type checks for arrays, method calls, and structured types like classes in the Jzero subset of Java. Key topics include array type checks, method call verification, and structured type access validation. Mastering these concepts enables developers to conduct sophisticated tree traversals for comprehensive type checking, crucial for building practical programming languages. Beginning with array type checking, this chapter lays the groundwork for handling complex composite types, empowering readers to enhance compiler capabilities effectively.
 
 **Key Insights**:
 1.	For any specific array access, the result of a subscript operator will be the array’s element type. With a struct or class access, the name of the (member) field within the struct must be used to determine the resulting type, via a symbol table lookup or something equivalent.
@@ -97,7 +105,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	Besides member access, type checking occurs when composite types are created, assigned, passed as parameters, and, in some languages, destroyed.
 
 ### Chapter 9, Intermediate Code Generation
-
+This chapter introduces the concept of intermediate code and demonstrates its generation, focusing on examples from the Jzero language. After mastering tree traversals to analyze and augment syntax trees in previous chapters, this chapter initiates the compiler's output construction process. Intermediate code, a sequence of machine-independent instructions, serves as an intermediary step before optimization and final code generation for a target machine. Key topics include understanding intermediate code, defining an instruction set, and generating code for expressions and control flow. This chapter lays the groundwork for subsequent optimization phases and final code generation. 
 **Key Insights**:
 1.	It would be reasonable, and could be appropriate, to introduce three address instructions to do input and output. However, most languages’ input and output operations are encapsulated by a function or method calling interface, as I/O tends to be encapsulated either by language runtime system calls or system calls.
 2.	Semantic rules are logical declarative statements of how to compute semantic attributes. Synthesized attributes can generally be computed by bottom-up, post-order tree traversals. Depending on their interdependences, inherited attributes can be computed by one or more top-down, pre-order tree traversals.
@@ -105,6 +113,7 @@ One thing I didn't really understand after my college compiler class is that the
 4.	A naïve code generator that calls genlocal() for every new local variable may use far more space on the stack than is necessary. Excessive stack sizes may reduce performance due to poorer page caching, and in heavily recursive code, it may increase the possibility of a stack overflow or running out of memory.
 
 ### Chapter 10, Syntax Coloring in an IDE
+This chapter explores the essential ecosystem of tools required for developing a programming language, emphasizing the significance of an integrated development environment (IDE). An IDE streamlines the development process by incorporating source code editing, compilation, linking, and execution within a unified interface. Modern IDEs offer additional features like GUI builders and debuggers. Addressing the importance of IDE support for language adoption, this chapter tackles challenges related to integrating language features into popular IDEs, focusing on Visual Studio Code for Jzero support and demonstrating syntax-coloring IDE code in Unicon. Key topics include considerations for building your own IDE versus supporting existing ones, setting up software dependencies, adding language support to Visual Studio Code, integrating compilers into programmer's editors, optimizing file processing to avoid unnecessary parsing, and leveraging lexical information for syntax coloring and error highlighting. The chapter emphasizes communication and coordination within software systems, highlighting efficient data sharing mechanisms between IDEs and compilers. 
 
 **Key Insights**:
 1.	Colorblind individuals may be able to utilize a limited number of grayscales or textures in IDEs where color-seeing individuals use colors. For many users who have only partial color blindness, allowing users to customize the assignments of colors to various source code elements may be the best solution. If using textures to substitute for colors, one might use the background texture where text fonts are drawn. Other font styles such as bold, italics, underlining, or shadowing might also be used.
@@ -112,12 +121,18 @@ One thing I didn't really understand after my college compiler class is that the
 3.	There are many possible ways to indicate syntactic nesting. For example, nesting might be represented by indentation, a progressive darkening of the background color, or boundaries of scopes might be explicitly drawn with dashed lines.
 
 ### Chapter 11, Preprocessors and Transpilers
+This chapter marks a return to generating executable output from source code, offering various approaches. We discuss translation to another high-level language here, while subsequent chapters explore bytecode and native code translation. Starting with translation to a high-level language is often the quickest path to implementation.
+
+In the past, languages were primarily implemented through interpreters or compilers. Now, many new languages use preprocessors or transpilers to generate code for existing languages. This chapter introduces preprocessors and transpilers, covering their implementation and differences. Topics include understanding preprocessors, code generation in the Unicon preprocessor, and transpiling Jzero code to Unicon.
 
 **Key Insights**:
 1.	Preprocessors in C/C++ have been known to be a subtle source of bugs, particularly when programmers misuse them. Many of these bugs occur due to macros with parameters, whose bodies can call other macros with parameters. The output after all macros are expanded can be tricky, or surprising. Setting aside the issue of bugs, if one is not careful, macros can reduce readability instead of improving it, or they can give a false sense of security when a macro looks simple but what it expands to is complex.
 2.	Transpilers have a bootstrapping problem: they depend on some other high-level language being ported first. Transpilers leave you dependent on the underlying language working correctly, but the underlying language may change in ways that break the transpiler. Transpilers may also introduce problems with performance or the debugging of code.
 
 ### Chapter 12, Bytecode Interpreters
+This chapter explores the significance of bytecode in enabling the execution of programming languages with novel features beyond mainstream CPU capabilities. By generating bytecode for an abstract machine tailored to the language's domain, developers can liberate their language from hardware constraints and produce code optimized for specific problem domains. Designing a custom bytecode instruction set empowers developers to execute programs using a virtual machine tailored to interpret those instructions.
+
+Key topics covered include understanding bytecode, distinguishing it from intermediate code, designing a bytecode instruction set for Jzero, and implementing a bytecode interpreter. Close ties between this chapter and Chapter 13, "Generating Bytecode," are emphasized, urging readers to explore both before diving into the code.
 
 **Key Insights**:
 1.	Complex instruction sets take more time and logic to decode and might make the implementation of the byte-code interpreter more difficult or less portable. On the other hand, the closer the final code comes to resembling intermediate code, the simpler the final code generation stage becomes.
@@ -125,6 +140,11 @@ One thing I didn't really understand after my college compiler class is that the
 3.	Some bytecode interpreters may benefit from the ability to modify code at runtime. For example, bytecode that was linked using byte-offset information may be converted into code that uses pointers. Immutable code makes this type of self-modifying behavior more difficult or impossible.
 
 ### Chapter 13, Generating Bytecode
+This chapter continues the journey of code generation, transitioning from intermediate code to bytecode. This process transforms intermediate representations into executable final code, typically performed at compile time but adaptable to other stages like link time or runtime. By generating bytecode, developers unlock another option for executing programs beyond transpilation to high-level languages.
+
+Translation to bytecode involves iterating through intermediate instructions and converting them into bytecode instructions. This straightforward process, although depicted simply in this chapter, is crucial for bringing new programming languages to life.
+
+Key topics covered include converting intermediate code to Jzero bytecode, comparing bytecode assembler with binary formats, and integrating the runtime system through linking and loading. Additionally, an example from Unicon illustrates bytecode generation in icont.
 
 **Key Insights**:
 1.	Operands from multi-operand instructions are pushed onto the stack by PUSH instructions. The actual operation computes a result. The result is stored in memory by a POP instruction.
@@ -135,6 +155,7 @@ One thing I didn't really understand after my college compiler class is that the
 6.	Whether portability trumps performance is a design decision, and there is no one right answer. It is possible to write a portable bytecode in which portable instructions rewrite themselves into native formats on the fly. In an extreme case, this might entail just-in-time compilation to pure native code.
 
 ### Chapter 14, Native Code Generation
+This chapter explores the process of generating native code from intermediate code, focusing on the x64 architecture, prevalent in laptops and desktops. Native code refers to instructions directly supported by the hardware of a specific machine. Key topics include deciding when to generate native code, introducing the x64 instruction set, utilizing registers, converting intermediate code to x64 code, and generating x64 output.
 
 **Key Insights**:
 1.	There are many new concepts in native code. These include many kinds and sizes of registers and main memory access modes. Choosing from many possible underlying instruction sequences is also important.
@@ -142,6 +163,11 @@ One thing I didn't really understand after my college compiler class is that the
 3.	Function call speed is important because modern software is often organized into many frequently called tiny functions. The x64 architecture performs fast function calls if functions take advantage of passing the first six parameters in registers. Several aspects of x64 architecture seem to have the potential to reduce execution speed, such as a need to save and restore large numbers of registers to memory before and after a call.
 
 ### Chapter 15, Implementing Operators and Built-In Functions
+This chapter delves into enhancing programming languages by incorporating very high-level and domain-specific features through built-in operators and functions. While libraries are common for extending mainstream languages, they may not always suffice for certain requirements. Integrating operators and built-in functions directly into the language can streamline coding, improve performance, and enable complex language semantics.
+
+Using Jzero as an example, this chapter illustrates the implementation of operators and functions, focusing on String and array types. Additionally, it compares these implementations with those in Unicon.
+
+Key topics covered include implementing operators, writing built-in functions, integrating built-ins with control structures, and developing operators and functions for Unicon. 
 
 **Key Insights**:
 1.	Although libraries are great, they have downsides. Libraries tend to have more version compatibility problems than the features that are built into the language. Libraries are unable to provide a notation that is concise and readable as built-ins. Lastly, libraries do not lend themselves to interactions with novel control structures to support new application domains.
@@ -149,6 +175,9 @@ One thing I didn't really understand after my college compiler class is that the
 3.	Ultimately, we have to read the books written by the Java language inventors to hear their reasons, but one answer might be that Java designers wanted to use strings as a class and decided classes would not be free to implement operators, for the sake of referential transparency.
 
 ### Chapter 16, Domain Control Structures
+This chapter explores the importance of introducing novel control structures in domain-specific languages (DSLs) to accommodate unique or customized semantics. While adding new functions or operators is relatively straightforward, creating new control structures poses greater challenges. However, these domain-specific control structures can significantly enhance the expressiveness and efficiency of a language, making it more suitable for specific application domains.
+
+Key topics covered include recognizing the need for new control structures, processing text using string scanning, and rendering graphics regions. The chapter aims to provide insights into determining when and how to implement new control structures in language design, emphasizing the balance between familiarity and innovation.
 
 **Key Insights**:
 1.	Control structures in very high-level and domain-specific languages had better be a lot more expressive and powerful than just if statements and loops; otherwise, programmers would be better off just coding in a mainstream language. Often, a control structure can add power by changing the semantic interpretation of the code inside it, or by changing the data to which the code is applied.
@@ -157,12 +186,21 @@ One thing I didn't really understand after my college compiler class is that the
 4.	It is tempting to bundle as much additional semantics into a domain control structure as possible so that you make the code more concise. However, if a good number of wsection constructs are not based on a hierarchical 3D model and would not make use of the built-in functionality of PushMatrix() and PopMatrix(), bundling that into wsection might slow down the construct’s execution speed unnecessarily.
 
 ### Chapter 17, Garbage Collection
+This chapter emphasizes the critical role of memory management in programming, advocating for automatic heap memory management through garbage collection in any modern language. Garbage collection automates the process of freeing heap memory when it's no longer needed, enhancing memory utilization and reducing the risk of memory leaks.
+
+Two primary methods of garbage collection are discussed: reference counting and mark-and-sweep collection. Reference counting offers incremental memory freeing but suffers from fatal flaws outlined in the chapter. Mark-and-sweep collection, while more robust, introduces periodic execution pauses during garbage collection.
+
+Key topics include understanding the importance of garbage collection, implementing reference counting, and executing mark-and-sweep collection. Through these discussions, readers will learn essential skills such as tracking object references, identifying live data, and freeing memory for reuse.
+
+The chapter aims to elucidate the significance of garbage collection and provide insights into its implementation. Understanding these concepts is crucial for effective memory management in programming languages. 
 
 **Key Insights**:
 1.	You could modify the PostDescrip() macro to check for a null value before checking whether a value is a qualifier or a pointer. Whether such a check pays for itself depends on how costly the bitwise AND operator is, and the actual frequency of different types of data encountered during these checks, which can be measured but may well vary, depending on the application.
 2.	If each class type had its own heap region, it may become possible in the implementation that class instances might no longer need to track their size, potentially saving memory costs for classes that have many small instances. The freed garbage instances could be managed on a linked list and compared with a mark-and-sweep collector, and instances might never need to be moved or pointers updated, simplifying garbage collection. On the other hand, some program runs might only use a very few of the various classes, and allocating a dedicated heap region for such classes might be a waste.
 3.	While some time might be saved by not moving data during garbage collection, over time, a substantial amount of memory might be lost to fragmentation. Small chunks of free memory might go unused because later memory allocation requests were for larger amounts. The task of finding a free chunk of sufficient size might become more complex, and that cost might exceed the time saved by not moving data.
 
+
+> If you feel this book is for you, get your [copy](https://www.amazon.com/Build-Your-Own-Programming-Language/dp/1804618020) today! <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
 
 
